@@ -11,7 +11,7 @@ var main = {
 
         $('#btn-delete').on('click', function () {
             _this.delete();
-        })
+        });
     },
 
     save : function () {
@@ -58,11 +58,11 @@ var main = {
     },
 
     delete : function () {
-        var id = $('id').val();
+        var id = $('#id').val();
 
         $.ajax({
             type: 'DELETE',
-            url: '/api/v1/posts'+id,
+            url: '/api/v1/posts/'+id,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8'
         }).done(function() {
