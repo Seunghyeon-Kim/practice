@@ -1,5 +1,6 @@
 package example.org.practice.web;
 
+import example.org.practice.config.auth.LoginUser;
 import example.org.practice.config.auth.dto.SessionUser;
 import example.org.practice.service.posts.PostsService;
 import example.org.practice.web.dto.PostsResponseDto;
@@ -21,9 +22,8 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null) {
             model.addAttribute("userName", user.getName());
